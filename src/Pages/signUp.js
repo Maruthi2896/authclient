@@ -13,14 +13,18 @@ function SignUp() {
     fetchUsers();
   }, []);
   const fetchUsers = () => {
-    axios.get("http://localhost:3333/register").then((res) => {
+    axios.get("https://authbackend-0biu.onrender.com/register").then((res) => {
       console.log(res.data);
     });
   };
   const Register = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3333/register", { email, username, password })
+      .post("https://authbackend-0biu.onrender.com/register", {
+        email,
+        username,
+        password,
+      })
       .then(() => {
         alert("Registration successful...");
         setEmail("");

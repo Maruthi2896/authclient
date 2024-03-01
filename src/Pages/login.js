@@ -12,14 +12,14 @@ function Login() {
     fetchUsers();
   }, []);
   const fetchUsers = () => {
-    axios.get("http://localhost:3333/register").then((res) => {
+    axios.get("https://authbackend-0biu.onrender.com/register").then((res) => {
       console.log(res.data);
     });
   };
   const loginHandle = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3333/login", {
+      const response = await axios.post("https://authbackend-0biu.onrender.com/login", {
         username,
         password,
       });
