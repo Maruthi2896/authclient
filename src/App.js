@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Pages/home";
+import Navbar from "./components/navbar";
+import Login from "./Pages/login";
+import SignUp from "./Pages/signUp";
+import Account from "./Pages/account";
 function App() {
+  const isUserloggedIn = !!localStorage.getItem("token");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        {isUserloggedIn && <Route path="/account" element={<Account />} />}
+      </Routes>
     </div>
   );
 }
